@@ -1,0 +1,162 @@
+@charset "utf-8";
+/* setting the entire page size the same as the browser */
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+	width:100%;
+	border:0;
+	background-color: white;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-size: 12px;
+}
+#wrapper {
+	min-height:100%;
+	position:relative;
+}
+#header {
+	margin:0;
+	padding:0;
+	border:1px solid teal;
+	font-weight:bolder;
+	color: GhostWhite;
+  	background-color: teal;
+	width: 100%;
+	height: 15%;
+	vertical-align:middle;
+	text-align:center;
+}
+#content {
+	 /* Height of the footer element */
+	padding-bottom:50px;
+	width:100%; 
+	height:auto;
+	border-top:1px solid teal; 
+	background-color:white;
+}
+#footer {
+	background:#ffab62;
+	width:100%;
+	height:30px;
+	position:absolute;
+	bottom:0;
+	left:0;
+	text-align: center;
+	font-weight: bold;
+	color: GhostWhite;
+	border: 1px solid teal;
+	background-color: teal;
+	}
+fieldset{/*The box for login/registration forms.*/
+	border: 3px solid teal;	
+	width: 30%;
+	height:auto;
+	vertical-align: middle;
+	text-align: center;
+	margin: 20px auto;
+	-webkit-border-radius: 1em;  /* Safari */  
+  	-moz-border-radius: 1em;    /* Firefox\Gecko Engine */  
+ 	-o-border-radius: 1em;
+	border-radius:1em;
+	background-color: #FFC;
+	position: relative;
+}
+legend{/*label of the fieldset*/
+	color: teal; 
+	font-weight: bold;
+	font-size: 25px;
+    }
+#insideFS{/*To set things inside the fieldset*/
+	margin: 20px auto;
+	vertical-align: middle;
+	}
+table{
+	text-align:center;
+	font-size:16px;
+}
+.button{
+	-webkit-border-radius: 1em;  /* Safari */  
+  	-moz-border-radius: 1em;    /* Firefox\Gecko Engine */  
+ 	 -o-border-radius: 1em;
+	border-radius:1em;
+	border: 5px solid teal;
+	color: white;
+	background-color:teal;
+	font-weight:bold;
+	text-align:center
+	}
+.error {
+	font-weight: bold;
+	color: #FF0000;
+	text-align: center;
+	}
+.txtc{text-align:center;}
+.txtl{text-align: left;}
+.txtr{text-align:right;}
+th {
+		color: teal;
+		font-weight: bold;
+	}
+form label{
+		display: inline-block; 
+		width: 150px;
+		font-weight: bold;
+		text-align:center; 
+		position:relative;
+		margin:20px 0 auto;
+		color: teal;
+		font-size:14px;
+	}
+input,select{
+	font-size:14px;
+	text-align:center;}
+#menubar1 {
+	border:1px solid teal;
+	font-size:larger;
+	color: GhostWhite;
+	width:50%;
+	height:8%;
+	position:absolute;
+	background-color: teal;
+	}
+#menubar2 {
+	border:1px solid teal;
+	font-size:larger;
+	color: GhostWhite;
+	width:50%;
+	height:8%;
+	position:absolute;
+	left: 50%;
+	background-color: teal;
+	}
+a,a:visited
+{
+	color:teal;
+}
+#menubar2 a, #menubar2 a:visited
+{
+text-decoration:none;
+color:GhostWhite;
+}
+.menubar{
+	padding-right:5px;
+	list-style:none;
+	margin: 0;
+}
+#menubar2 li{display:inline; list-style:none;}
+#msg_container{
+		height:90%;
+		width:100%;
+		position:relative;
+	}
+#msg_box{
+			width:30%;
+			position:absolute;
+			margin: 200px 450px;
+			border:2px solid black;
+			font-size:x-large;
+			font-weight:bold;
+			text-align:center;
+}
+h5{color:teal;}
