@@ -38,7 +38,7 @@ if(!isset($_SESSION['faculty_username']))
     <fieldset style="width:60">
        	<legend>Add Course</legend>
    		<div class="insideFS">
-	<form action=".php" method="post">
+	<form action="add_course_2.php" method="post">
 	<table style="width=100%" align="center" cellpadding="10">
         <!--<tr>
 			<td> Course_Id: </td>
@@ -46,21 +46,21 @@ if(!isset($_SESSION['faculty_username']))
 		</tr>-->
         <tr>
 			<td> Course Name</td> 
-			<td> <input type="text" name="course_name"  size="37" placeholder="Data Structures" ><br> </td>
+			<td> <input type="text" name="course_name"  size="37" placeholder="Data Structures" required="required" ><br> </td>
 		</tr>
 		<tr>
 			<td> Faculty</td> 
 			<td> <select name="faculty_name" required >
 			                <option selected="selected" value="">Select one</option>
 			<?php 
-			$queryfac= 'select name from faculty';
+			$queryfac= 'select * from faculty';
 			$res=$mysqli->query($queryfac);
 			//echo $queryfac;
 			for($i=0;$i<$res->num_rows;$i++)
 			{
 				$row=$res->fetch_row();
 				//echo $row[0];
-			 echo  '<option value="$row[0]">'.$row[0].'</option>';
+			 echo  "<option value='$row[0]'>".$row[3]."</option>";
 			}
 			?></select>
 	        </td>
@@ -84,7 +84,7 @@ if(!isset($_SESSION['faculty_username']))
                 <option value="Physical Education">Physical Education</option>
 
             </select>
-            <input type="hidden" value="search" name="search"/>
+            <input type="hidden" value="valid" name="valid"/>
             </td>
 		</tr>
 

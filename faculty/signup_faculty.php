@@ -17,10 +17,10 @@
 	$password_1=$mysqli->real_escape_string(trim($_POST['password_1']));
 	$password_2=$mysqli->real_escape_string(trim($_POST['password_2']));
 	$password_encrypted=sha1($password_1);
-	echo $password_1;
-	echo $password_encrypted;
-	echo $username;
-	echo $fa;
+	//echo $password_1;
+	//echo $password_encrypted;
+	//echo $username;
+	//echo $fa;
 
 	//$js_name='../JavaScript/signup.js';
 	//echo "Before admin id if";
@@ -62,7 +62,7 @@
 			{
 				//echo "Inside else";				
 				$query_2="insert into faculty values('$username','$dept','$password_encrypted','$name','$fa')";
-				echo $query_2;
+				//echo $query_2;
 
 				$mysqli->query($query_2);
 				if($mysqli->affected_rows==1)
