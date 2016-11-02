@@ -1,7 +1,4 @@
 <form method="post" action="index.php" id="login_form">
-	<h3 class="txtc">
-    	<a href="signup.php"><em>New Users: Click Here to Register.</em></a>
-    </h3>
     <fieldset>
        	<legend>Log In</legend>
    		<div class="insideFS">

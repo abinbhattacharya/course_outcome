@@ -5,7 +5,7 @@ $page_title='Add Course';
 	$last_login='';
 	$js_name='';
 	$css_name='../include/style.css';
-if(!isset($_SESSION['faculty_username']))
+if(!isset($_SESSION['admin_username']))
 {
 	require_once('../include/header.php');
 	?>
@@ -20,7 +20,7 @@ if(!isset($_SESSION['faculty_username']))
 	
 	require_once('../include/header.php');?>
 	<div id="menubar1" class="txtl">
-		<ul class="menubar"><li><h3>&nbsp;&nbsp;Welcome, <?php echo $_SESSION['faculty_username']; ?>&nbsp;&nbsp;</h3></li></ul>
+		<ul class="menubar"><li><h3>&nbsp;&nbsp;Welcome, <?php echo $_SESSION['admin_username']; ?>&nbsp;&nbsp;</h3></li></ul>
 	</div>
 	<div id="menubar2" class="txtr">
 		<ul class="menubar">
@@ -46,7 +46,7 @@ if(!isset($_SESSION['faculty_username']))
 
 
 	$course_name=$mysqli->real_escape_string(trim($_POST['course_name']));
-	$faculty_name=$mysqli->real_escape_string(trim($_POST['faculty_name']));
+	// $faculty_name=$mysqli->real_escape_string(trim($_POST['faculty_name']));
 	$dept=$mysqli->real_escape_string(trim($_POST['dept']));
 
 	// echo $faculty_name;
@@ -58,30 +58,31 @@ if(!isset($_SESSION['faculty_username']))
 
 	if($mysqli->affected_rows==1)
 	{
-		$query_2="select course_id from course where course_name='$course_name' order by course_id desc limit 1";
-		$result=$mysqli->query($query_2);
+		echo '<h1 class="txtc">Course entered succesfully.</h1>';
+		// $query_2="select course_id from course where course_name='$course_name' order by course_id desc limit 1";
+		// $result=$mysqli->query($query_2);
 
 
-		$row=$result->fetch_row();
+		// $row=$result->fetch_row();
 
-		// echo $row[0];
-		$course_id=$row[0];
-		// echo $course_id;
+		// // echo $row[0];
+		// $course_id=$row[0];
+		// // echo $course_id;
 
-		$query_3="insert into faculty_course values('$faculty_name','$course_id','$_SESSION[faculty_username]')";
-		// echo $query_3;
+		// $query_3="insert into faculty_course values('$faculty_name','$course_id','$_SESSION[faculty_username]')";
+		// // echo $query_3;
 
-		$mysqli->query($query_3);
+		// $mysqli->query($query_3);
 
-		if($mysqli->affected_rows==1)
-		{
-			echo '<h1 class="txtc">Course entered succesfully.</h1>';
-		}
+		// if($mysqli->affected_rows==1)
+		// {
+		// 	echo '<h1 class="txtc">Course entered succesfully.</h1>';
+		// }
 
-		else
-		{
-			echo '<h1 class="txtc">There was a problem. Try again later.</h1>';
-		}
+		// else
+		// {
+		// 	echo '<h1 class="txtc">There was a problem. Try again later. Inside</h1>';
+		// }
 	}
 
 else

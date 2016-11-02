@@ -1,7 +1,7 @@
 <?php 
 	require_once('start_session.php');
 	$error='';
-	if(!isset($_SESSION['faculty_username']))
+	if(!isset($_SESSION['admin_username']))
  	{
 		if(isset($_POST['username']))
 		{
@@ -24,7 +24,7 @@
 			// $result=$mysqli->query($query);
 			// echo $result;
 			//echo "Here2";
-		$query_1="Select * from faculty where username='$username' and password='$password_encrypt'";
+		$query_1="Select * from admin where username='$username' and password='$password_encrypt'";
 		//echo $query_1;
 		$sql_result_1=$mysqli->query($query_1);
 		//echo $sql_result_1->num_rows;
@@ -33,13 +33,11 @@
 				//echo "Success";
 				//Set the session vars(and cookies),and redirect to the home page
 				$row=$sql_result_1->fetch_row();
-       			$_SESSION['faculty_username'] = $row[0];
-       			$_SESSION['fa'] = $row[4];
+       			$_SESSION['admin_username'] = $row[0];
           		//$_SESSION['a_username'] = $row[1];
 				//$_SESSION['a_stream']=$row[2];
 				//$_SESSION['a_login']=$row[3];
-				setcookie('faculty_username', $row[0], time() + (60*60*2));
-				setcookie('fa', $row[4], time() + (60*60*2));
+				setcookie('admin_username', $row[0], time() + (60*60*2));
 				//setcookie('a_username', $row[1], time() + (60 * 60 * 2));
 				//setcookie('a_stream', $row[2], time() + (60 * 60 * 2 ));
 				//setcookie('a_login',$row[3],time()+(60*60*2));
@@ -54,13 +52,18 @@
 		}
 		}
 	}
-		$page_title='Faculty Log In';
+		$page_title='Admin Log In';
 		//$js_name='../JavaScript/login.js';
 		$last_login='';
 		$css_name='../include/style.css';		
-		if(!isset($_SESSION['faculty_username']))
+		if(!isset($_SESSION['admin_username']))
 		{ 
 			require_once('../include/header.php');
+			?>
+			<h3 class="txtc">
+    	<a href="signup.php"><em>New Users: Click Here to Register.</em></a>
+    </h3>
+    <?php
  			require_once('../include/login_form.php');
 			echo'<br/>';
 			echo'<h3 class="txtc"><a href="../index.html">&raquo; Click here to go back to the homepage</a><h3><br/>';

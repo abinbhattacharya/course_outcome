@@ -5,6 +5,7 @@ session_start();
     	if (isset($_COOKIE['faculty_username']))
 		{
 			$_SESSION['faculty_username'] = $_COOKIE['faculty_username'];
+			$_SESSION['fa'] = $_COOKIE['fa'];
 		}
 	}
 ?>

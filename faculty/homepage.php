@@ -36,18 +36,41 @@ else
 	</div>
 	<div class="txtc">
     <ul class="menubar">
-		<h2>
         <br/><br/><br/><br/><br/>
-       <li class="menubar"><a href="add_course.php" >&raquo;Add Course</a></li>
+        <h3>
+        <?php
+        if($_SESSION['fa']==1)
+        {
+        	?>
+        <fieldset>
+		<legend>Faculty Advisor</legend>
+        <div class="insideFS">
+        <br/>
+       <li class="menubar"><a href="add_student.php" >&raquo;Add Student</a></li>
         <br/><br/>
-        <li class="menubar"><a href="edit_course.php">&raquo;Edit Course</a></li>
+        <li class="menubar"><a href="faculty_course.php">&raquo;Assign Faculty to Course</a></li>
         <br/><br/>
-	   <li class="menubar"><a href="remove_course.php">&raquo;Remove Course</a></li>
-		<!--<br/><br/>
-        <li class="menubar"><a href="remove_student.php">&raquo;Remove a Student</a></li>
+	   <li class="menubar"><a href=".php">&raquo;View Batch Course Objective Attainment</a></li>
+	   </div>
+     </fieldset>
+	   <?php
+		}
+		?>
+		<br/><br/><br/><br/>
+		<fieldset>
+		<legend>Faculty</legend>
+        <div class="insideFS">
+        <br/>
+        <li class="menubar"><a href="add_co.php">&raquo;Add Course Objective</a></li>
 		<br/><br/>
-        <li class="menubar"><a href="validate_cs_1.php">&raquo;Validate Credit Sheet(s)</a></li>-->
-        </h2>
+        <li class="menubar"><a href=".php">&raquo;Add Question Paper Details</a></li>
+        <br/><br/>
+        <li class="menubar"><a href=".php">&raquo;Enter Marks</a></li>
+        <br/><br/>
+        <li class="menubar"><a href=".php">&raquo;View Course Objective Attainment</a></li>
+        </h3>
+     	</div>
+     	</fieldset>
 	 </ul>
 	</div> 
 <?php
