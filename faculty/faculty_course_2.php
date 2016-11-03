@@ -60,6 +60,7 @@ if(!isset($_POST['valid']))
 $faculty=$_POST['faculty'];
 $course=$_POST['course'];
 $fa=$_SESSION['faculty_username'];
+$batch=$_POST['batch'];
 $query_1="insert into faculty_course values('$faculty', '$course', '$fa')";
 //echo $query_1;
 $result=$mysqli->query($query_1);
@@ -67,9 +68,21 @@ $result=$mysqli->query($query_1);
  //echo $result;
 echo "<br/><br/><br/><br/><br/><br/>";
  if($mysqli->affected_rows==1)
+	{
+			$query_2="insert into batch_course values('$batch','$course')";
+			//echo $query_2;
+			$mysqli->query($query_2);
+
+			if($mysqli->affected_rows==1)
 		{
 			echo '<h1 class="txtc">Faculty assigned succesfully.</h1>';
 		}
+
+		else
+		{
+			echo '<h1 class="txtc">There was a problem. Try again later.(Inside)</h1>';
+		}
+	}
 
 		else
 		{

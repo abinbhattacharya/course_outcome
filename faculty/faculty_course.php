@@ -58,6 +58,27 @@ else
    		<div class="insideFS">
 	<form action="faculty_course_2.php" method="post">
 	<table style="width=100%" align="center" cellpadding="10">
+	<tr>
+            <td>Select Batch</td>
+			<td>
+            <select name="batch" required>
+            	<option selected="selected" value="">Select one</option>
+            	<?php 
+			$query_batch= "select program_year from fa_batch where fa_id='".$_SESSION["faculty_username"]."'";
+			$res_2=$mysqli->query($query_batch);
+			echo $query_batch;
+			for($i=0;$i<$res_2->num_rows;$i++)
+			{
+				$row=$res_2->fetch_row();
+				//echo $row[0];
+			 echo  "<option value='$row[0]'>".$row[0]."</option>";
+			}
+			?>
+
+            </select>
+            </td>
+
+       <tr>
 	<tr>	
 			<td>Select Faculty</td>
 			<td>
@@ -66,7 +87,7 @@ else
             	<?php 
 			$queryfac= "Select * from faculty ";
 			$res=$mysqli->query($queryfac);
-			echo $queryfac;
+			//echo $queryfac;
 			for($i=0;$i<$res->num_rows;$i++)
 			{
 				$row=$res->fetch_row();
@@ -86,7 +107,7 @@ else
             	<?php 
 			$queryfac= "Select * from course";
 			$res=$mysqli->query($queryfac);
-			echo $queryfac;
+			//echo $queryfac;
 			for($i=0;$i<$res->num_rows;$i++)
 			{
 				$row=$res->fetch_row();

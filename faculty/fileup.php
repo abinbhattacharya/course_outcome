@@ -36,23 +36,19 @@ if (isset($_FILES['fname'])) {
         {
           $narr=explode(",",$arr[$i]);
           print_r ($narr);
+          $narr[0]="'".$narr[0]."'";
+          $narr[1]="'".$narr[1]."'";
 
-          $narr1[0]="'".$narr[0]."'";
-          $narr1[1]="'".$narr[1]."'";
-
-          $que='insert into student values('.$narr1[0].','.$narr1[1].','.$yea.')';
+          $que='insert into student values('.$narr[0].','.$narr[1].','.$yea.')';
           //echo $que;
           $res=$mysqli->query($que);
           if($res){
-          $names=$names." ".$narr[1];
+          $names=$names."\n".$narr[1];
           echo $narr[1]." has been added.\n";
             }
         }
-        //$yo="<script>alert(Click ok to continue. Names added are:".$names.")</script>";
-        $y1="Names added are: ".$names;
-        $y1="('".$y1."')";
-        
-        echo "<script>alert".$y1."</script>";
+        $yo="<script>alert(Click ok to continue. Names added are:".$names.")</script>";
+        echo $yo;
         header("Refresh:10;URL=add_student.php");
 
     }

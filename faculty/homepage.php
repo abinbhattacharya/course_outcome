@@ -65,7 +65,7 @@ else
 		<br/><br/>
         <li class="menubar"><a href="add_test.php">&raquo;Add Question Paper Details</a></li>
         <br/><br/>
-        <li class="menubar"><a href="add_student.php">&raquo;Enter Marks</a></li>
+        <li class="menubar"><a href="enter_marks.php">&raquo;Enter Marks</a></li>
         <br/><br/>
         <li class="menubar"><a href=".php">&raquo;View Course Objective Attainment</a></li>
         </h3>

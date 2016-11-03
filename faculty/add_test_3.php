@@ -68,16 +68,19 @@ for($i=1;$i<=sizeof($marks);$i++)
 	$sql='insert into test_ques_co values(';
 	$ques=$i;
 	$ques="'".$ques."'";
-	$sql=$sql.$tid.",".$co[$i].",".$ques.",".$marks[$i].")";
-	//echo "\n";
-	// echo $sql."\n";
-	$res=$mysqli->query($sql);
-	if($mysqli->affected_rows!=1)
-		{
-			echo '<h1 class="txtc">There was a problem. Try again later.</h1>';
-			exit;
-		}
+	if(isset($co[$i]) && isset($marks[$i]))
+	{
+		$sql=$sql.$tid.",".$co[$i].",".$ques.",".$marks[$i].")";
+		//echo "\n";
+		// echo $sql."\n";
+		$res=$mysqli->query($sql);
+		if($mysqli->affected_rows!=1)
+			{
+				echo '<h1 class="txtc">There was a problem. Try again later.</h1>';
+				exit;
+			}
 	// echo $res;
+	}
 }
 for($q=1;$q<=sizeof($uniqco);$q++)
 {
