@@ -1,5 +1,5 @@
 <?php
-$page_title='Add Students ';
+$page_title='Add Student';
 $last_login='';
 $js_name='';
 $css_name='../include/style.css';
@@ -44,43 +44,48 @@ else
 		</ul>
 	</div>
 
-	<div class="txtc">
-    <ul class="menubar">
-    <br/>
-	<br/>
-	<br/>
+	
 <?php
 
-if(!isset($_POST['valid']))
+if(!isset($_POST['program_year']))
 	{
-		$home_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/add_student.php';
+		$home_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/add_course.php';
         header('Location: '.$home_url);
 		exit;
 	}
-
-	$program_year=$_POST['program_year'];
-	$number=$_POST['number'];
-
-	echo '<br/><br/><h1 class="txtc">'.$program_year.'</h1>';
 ?>
-
-<form name="add_student_2" action="add_student_3.php" method="post">
-        <input type="hidden" name="program_year" value='<?php echo $program_year?>'>
-		<table width="50%" border="1" align="center" cellspacing="0" cellpadding="10">
-				<tr><!--Header Row-->
-                	<th scope="col">Name</th>
-    				<th scope="col">Roll No.</th>
-				</tr>
 <?php
 
-for($i=1; $i<=$number; $i++)
-	{
-		echo '<tr><td><input type="text" name="name['.$i.']"></td>
-		<td><input type="text" name="roll['.$i.']"></td></tr>';
-	}
+//print_r($_POST);
+$name=$_POST['name'];
+$roll=$_POST['roll'];
+$list="insert into student(name,roll,program_year) values";
+
+$success=0;
+for($i=1;$i<=count($name);$i++)
+{
+   if(isset($name[$i]) && isset($roll[$i]) && $i!=count($name))
+   {
+   	$list.="('".$name[$i]."','".$roll[$i]."','".$_POST['program_year']."'),";
+   	$success++;
+   }
+   else if(isset($name[$i]) && isset($roll[$i]) && $i==count($name))
+   {
+   	$list.="('".$name[$i]."','".$roll[$i]."','".$_POST['program_year']."')";
+   	$success++;
+   }
+   else
+   {
+   	continue;
+   }
 }
-?>
-<tr><td colspan="2"><input type="submit" name="Add Students" class="button"></td></tr>
-<?php
+$res=$mysqli->query($list);
+echo "<br><br><br><br><br><br><br><br>";
+// echo $list;
+// echo $res;
+echo "<h1 class='txtc'>".$success." student(s) were added successfully.</h1>";
+echo '<h1 class="txtc"><a href="homepage.php">Click here</a> to go back to homepage.</h1>';
+
+}
 require_once('../include/footer.php');
 ?>
