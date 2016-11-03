@@ -61,51 +61,61 @@ if(!isset($_POST['valid_test']))
 
 	if($mysqli->affected_rows==1)
 	{
-			$query_2=" select course_obejective.co_id,co_detail from course_objective,course_co where course_objective.co_id = course_co.co_id and course_co.course_id = '$course_name'";
+			$query_2=" select course_objective.co_id,co_detail from course_objective,course_co where course_objective.co_id = course_co.co_id and course_co.course_id = '$course_name'";
 
-			$result=$mysqli->query($query_2);
+			//echo $query_2;
 
-			$number_co=$result->num_rows;
+			$result_2=$mysqli->query($query_2);
+
+			$query_3="select test_id from test where course_id='$course_name' and name='$test_name'order by test_id desc limit 1";
+
+			$result_3=$mysqli->query($query_3);
+
+			$row_test=$result_3->fetch_row();
+
+			$test_id=$row_test[0];
+
+			$number_co=$result_2->num_rows;
+
+			$row=$result_2->fetch_row();
 ?>
 			<form name="add_test_2" action="add_test_3.php" method="post">
         <input type="hidden" name="course_name" value='<?php echo $course_name?>'>
+        <input type="hidden" name="test_id" value='<?php echo $test_id?>'>
+        <input type="hidden" name="number_co" value='<?php echo $number_co?>'>
+
 		<table width="50%" border="1" align="center" cellspacing="0" cellpadding="10">
 				<tr><!--Header Row-->
                 	<th scope="col">Question No.</th>
-    				<th scope="col">Course Objective</th>
     				<th scope="col">Marks</th>
+    				<th scope="col">Course Objective</th>
 				</tr>
 <?php
 
-for($i=1; $i<=$number; $i++)
+for($i=1; $i<=$number_ques; $i++)
 	{
-		echo '<tr><td><input type="text" q_no="q_no['.$i.']"></td>
-		<td><input type="real" name="marks['.$i.']"></td></tr>';
+		echo '<tr><td><input type="text" name="q_no['.$i.']></td>
+		<td><input type="number" step="0.01" min=".01" name="marks['.$i.']"></td>';
 
 		//For CO dropdown
 		echo '<td><select name=co['.$i.']>';
+		echo '<option selected="selected" value="">Select one</option>';
 
 		for($j=1;$j<=$number_co;$j++)
 		{
-			$row=$result->fetch_row();
 
 			echo "<option value='$row[0]'>".$row[1]."</option>";
 		}
 
+		echo '</td></tr>';
+
 	}
 
 ?>
-<tr><td colspan="2"><input type="submit" name="Add Students" class="button"></td></tr>
+<input type="hidden" value="valid" name="valid_test_2"/>
+<tr><td colspan="3"><input type="submit" name="Add Questions" class="button"></td></tr>
 <?php
+}
 require_once('../include/footer.php');
+}
 ?>
-
-
-	}
-
-
-
-
- require_once('../include/footer.php');
- }
- ?>
