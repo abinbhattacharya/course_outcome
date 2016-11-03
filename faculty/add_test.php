@@ -1,7 +1,7 @@
 <?php
 require_once('start_session.php');
 require_once('../include/db_connect.php');
-$page_title='Add Course Objective';
+$page_title='Add Test Paper';
 	$last_login='';
 	$js_name='';
 	$css_name='../include/style.css';
@@ -38,7 +38,7 @@ if(!isset($_SESSION['faculty_username']))
     <fieldset style="width:60">
        	<legend>Add Course Objective</legend>
    		<div class="insideFS">
-	<form action="add_co_2.php" method="post">
+	<form action="add_test_2.php" method="post">
 	<table style="width=100%" align="center" cellpadding="10">
         <!--<tr>
 			<td> Course_Id: </td>
@@ -65,18 +65,28 @@ if(!isset($_SESSION['faculty_username']))
 	        </td>
 		</tr>
 		<tr>
-			<td> Course Objective</td> 
-			<td> <textarea   rows="5" column="20" required="required" name="co_details"  ></textarea><br> </td>
+		   <td>Test Name</td>
+		   <td><input type="text" name="test_name"  size="37" placeholder="Test 1" required="required" ><br> </td>
+		</tr>
+		
+		<tr>
+		   <td>Marks</td>
+		   <td><input type="number" name="marks"  size="37" placeholder="00" required="required" ><br> </td>
+		</tr>
+
+		<tr>
+		   <td>No Of Questions</td>
+		   <td><input type="number" name="number_ques"  size="37" placeholder="00" required="required" ><br> </td>
 		</tr>
 		
 
             
-            <input type="hidden" value="valid" name="valid_co"/>
+            <input type="hidden" value="valid" name="valid_test"/>
             </td>
 		</tr>
 
 		<tr>	
-			<td colspan="2"> <input type="submit" onclick="" value="Add Course Objective" class="button"> </td>
+			<td colspan="2"> <input type="submit" onclick="" value="Proceed" class="button"> </td>
 		</tr>
 
 	</table>
