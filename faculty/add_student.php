@@ -116,6 +116,35 @@ else
 </form>
 </div>
 </fieldset>
+<fieldset>
+<legend>Upload a CSV File</legend>
+<div class="insideFS">
+<form action="fileup.php" method="POST" enctype="multipart/form-data">
+<table>
+<tr>
+	<br><td><input type="file" name="fname"></td>
+</tr>
+<tr><td>Select Batch</td>
+	<td>
+	<?php
+	$queryfac= "Select program_year from fa_batch where fa_id='".$_SESSION['faculty_username']."'";
+			$res=$mysqli->query($queryfac);
+			//echo $queryfac;
+			echo "<select name='program_year' required>";
+            echo "<option selected='selected' value=''>Select one</option>";
+			for($i=0;$i<$res->num_rows;$i++)
+			{
+				$row=$res->fetch_row();
+				//echo $row[0];
+			 echo  "<option value='$row[0]'>".$row[0]."</option>";
+			}
+		?>
+	</td>
+</tr></table>
+<input type="submit"/>
+</form>
+</div>	
+</fieldset>
 <?php
 }
 require_once('../include/footer.php');
