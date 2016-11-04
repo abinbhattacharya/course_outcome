@@ -68,8 +68,9 @@ if(!isset($_POST['valid_marks']))
 			<td> <select name="test_name" required >
 			                <option selected="selected" value="">Select one</option>
 			<?php 
+			echo '<input type="hidden" name="course_name" value="'.$course_name.'"/>';
 			$query_test="select test.name, test.test_id, test.course_id, course.course_id, course.course_name, faculty_course.f_id, faculty_course.c_id from test, course, faculty_course where course.course_id=test.course_id and test.course_id=faculty_course.c_id and course.course_id='$course_name' and faculty_course.f_id='".$_SESSION['faculty_username']."'" ;
-			echo $query_test;
+			//echo $query_test;
 			$res=$mysqli->query($query_test);
 			//echo $queryfac;
 			for($i=0;$i<$res->num_rows;$i++)

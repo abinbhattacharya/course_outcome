@@ -36,7 +36,7 @@ if(!isset($_SESSION['faculty_username']))
     <br/>
     <br/>
     <fieldset style="width:60">
-       	<legend>Add Course Objective</legend>
+       	<legend>Add Test</legend>
    		<div class="insideFS">
 	<form action="add_test_2.php" method="post">
 	<table style="width=100%" align="center" cellpadding="10">

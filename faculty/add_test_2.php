@@ -77,7 +77,6 @@ if(!isset($_POST['valid_test']))
 
 			$number_co=$result_2->num_rows;
 
-			$row=$result_2->fetch_row();
 ?>
 			<form name="add_test_2" action="add_test_3.php" method="post">
         <input type="hidden" name="course_name" value='<?php echo $course_name?>'>
@@ -94,16 +93,19 @@ if(!isset($_POST['valid_test']))
 
 for($i=1; $i<=$number_ques; $i++)
 	{
-		echo '<tr><td><input type="text" name="q_no['.$i.']></td>
-		<td><input type="number" step="0.01" min=".01" name="marks['.$i.']"></td>';
+		echo '<tr><td><input type="text" name="q_no['.$i.']"></td>';
+		echo '<td><input type="number" step="0.01" min=".01" name="marks['.$i.']"></td>';
 
 		//For CO dropdown
 		echo '<td><select name=co['.$i.']>';
 		echo '<option selected="selected" value="">Select one</option>';
+		$query_2=" select course_objective.co_id,co_detail from course_objective,course_co where course_objective.co_id = course_co.co_id and course_co.course_id = '$course_name'";
+						$result_2=$mysqli->query($query_2);
 
 		for($j=1;$j<=$number_co;$j++)
 		{
-
+			
+				$row=$result_2->fetch_row();
 			echo "<option value='$row[0]'>".$row[1]."</option>";
 		}
 
@@ -113,7 +115,7 @@ for($i=1; $i<=$number_ques; $i++)
 
 ?>
 <input type="hidden" value="valid" name="valid_test_2"/>
-<tr><td colspan="3"><input type="submit" name="Add Questions" class="button"></td></tr>
+<tr><td colspan="3"><input type="submit" name="Add Questions" value="Add Questions" class="button"></td></tr>
 <?php
 }
 require_once('../include/footer.php');
