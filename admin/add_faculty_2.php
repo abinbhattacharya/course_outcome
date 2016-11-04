@@ -4,6 +4,7 @@
 	$page_title='Faculty Sign Up';
 	$css_name='../include/style.css';
 	require_once('start_session.php');
+	require_once "PHPMailer/PHPMailerAutoload.php";
 	
 	if(!isset($_SESSION['admin_username']))
 {
@@ -103,11 +104,48 @@
 				if($mysqli->affected_rows==1)
 				{
 					echo '<br/><br/><br/><br/><h1 class="txtc">Course entered succesfully.</h1>';
-					// $_SESSION['faculty_username'] = $username;
-					// setcookie('faculty_username', $username, time() + (60*60*2));
-					// $home_url = 'http://'.$_SERVER['HTTP_HOST'].dirname($_SERVER['PHP_SELF']).'/homepage.php';
-					// header('Location: '.$home_url);
-					// exit;
+					$mail = new PHPMailer;
+
+					//Enable SMTP debugging.
+					$mail->SMTPDebug = -3;
+					//Set PHPMailer to use SMTP.
+					$mail->isSMTP();
+					//Set SMTP host name
+					$mail->Host = "smtp.gmail.com";
+					//Set this to true if SMTP host requires authentication to send email
+					$mail->SMTPAuth = true;
+					//Provide username and password
+					$mail->Username = "bloodbank247365@gmail.com";
+					$mail->Password = "bloodbank123";
+					//If SMTP requires TLS encryption then set it
+					$mail->SMTPSecure = "tls";
+					//Set TCP port to connect to
+					$mail->Port = 587;
+
+					$mail->From = "bloodbank@gmail.com";
+					$mail->FromName = "bloodbank";
+					$em=$_POST["email"];
+					
+					
+					$name=$_POST["username"];
+					
+					$mail->addAddress("$em","$name");
+
+					$mail->isHTML(true);
+
+					$mail->Subject = "Signed Up";
+					$mail->Body = "<i>Your Username is $username and password is $password_1</i>";
+					$mail->AltBody = "This is the plain text version of the email conten";
+
+					if(!$mail->send())
+					{
+					    echo "Mailer Error: " . $mail->ErrorInfo;
+					}
+					else
+					{
+					    echo "Message has been sent successfully";
+					}
+
 				}
 				$mysqli->close();
 			}

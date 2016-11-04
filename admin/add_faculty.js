@@ -71,7 +71,7 @@ function start()
 	};
 	document.getElementById("sign_up").onclick=function(evt)
 	{
-		alert("in sign up func");
+		//alert("in sign up func");
 		validateForm();
 	};	
 	password2.onkeyup=function(evt)
