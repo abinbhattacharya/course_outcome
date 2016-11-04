@@ -84,6 +84,10 @@ else
 			<label for="password_2">Retype Password:</label>
 			<input type="password" name="password_2" id="password_2" minlength="8" required/>
             <p id="error_password_2" class="error"></p>
+      <label for="Email">Email</label>
+      <input type="email" name="email" id="email"  required/>
+            <!-- /<p id="error_password_2" class="error"></p> -->
+            
             
       <label for="fa">Faculty Advisor?</label>
       <input type="radio" name="fa" value="1" required/>Yes
